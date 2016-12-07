@@ -1,18 +1,20 @@
-# vuefire_20161202
+# friendlychat_vuefire_example
 
-> A Vue.js project
+> firebase's example "friendlychat" use vuefire rewrite.
+
+Have a look at the https://vuefire-20161202.firebaseapp.com/
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-npm install
+yarn
 
 # serve with hot reload at localhost:8080
-npm run dev
+yarn dev
 
 # build for production with minification
-npm run build
+yarn build
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
