@@ -14,7 +14,7 @@
           Sign-out
         </button>
         <button ref="signInButton" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white" @click="signIn">
-          <i class="material-icons">account_circle</i>Sign-in with Google
+          <i class="material-icons">account_circle</i>Sign-in with Facebook
         </button>
       </div>
     </div>
@@ -120,7 +120,7 @@ export default {
       // @click="removeMessage(message)
     },
     signIn () {
-      var provider = new Firebase.auth.GoogleAuthProvider()
+      var provider = new Firebase.auth.FacebookAuthProvider()
       auth.signInWithPopup(provider)
     },
     signOut () {
