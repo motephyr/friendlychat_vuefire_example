@@ -38,11 +38,11 @@
                   <img :src="message.imageUrl" />
                 </div>
               </div>
-                <button v-if="auth" class="mdl-button mdl-js-button mdl-button--raised" style="float:right;" @click="removeMessage(message)">X</button>
+<!--                 <button v-if="auth" class="mdl-button mdl-js-button mdl-button--raised" style="float:right;" @click="removeMessage(message)">X</button> -->
               <div class="name">{{message.name}}</div>
             </div>
           </div>
-          <form id="message-form" action="#">
+          <form v-if="auth" id="message-form" action="#">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" id="message" v-model.trim="newTodoText" @keyup.enter="addMessage">
               <label class="mdl-textfield__label" for="message">Message...</label>
@@ -51,7 +51,7 @@
               Send
             </button>
           </form>
-          <form id="image-form" ref="imageForm" action="#">
+          <form v-if="auth" id="image-form" ref="imageForm" action="#">
             <input id="mediaCapture" ref="mediaCapture" type="file" accept="image/*,capture=camera" @change="saveImageMessage">
             <button id="submitImage" title="Add an image" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white" @click="mediaCaptureClick">
               <i class="material-icons">image</i>
@@ -96,7 +96,8 @@ export default {
     }
   },
   methods: {
-    addMessage () {
+    addMessage (e) {
+      e.preventDefault()
       if (this.newTodoText) {
         var currentUser = auth.currentUser
         messagesRef.push({
@@ -126,7 +127,8 @@ export default {
     signOut () {
       auth.signOut()
     },
-    mediaCaptureClick () {
+    mediaCaptureClick (e) {
+      e.preventDefault()
       this.$refs.mediaCapture.click()
     },
     checkSignedInWithMessage () {
